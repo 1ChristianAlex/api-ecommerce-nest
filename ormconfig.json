@@ -1,0 +1,21 @@
+{
+  "type": "postgres",
+  "host": "localhost",
+  "port": 5432,
+  "username": "postgres",
+  "password": "123456",
+  "database": "ecommerce_database",
+  "entities": [
+    "src/database/entity/*.entity{.ts,.js}",
+    "src/database/entity/*.schema/*.entity{.ts,.js}"
+  ],
+  "synchronize": true,
+  "logging": true,
+  "migrationsTableName": "migration",
+  "migrations": [
+    "src/database/migration/*.ts"
+  ],
+  "cli": {
+    "migrationsDir": "src/database/migration"
+  }
+}
