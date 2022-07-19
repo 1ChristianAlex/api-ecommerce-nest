@@ -1,10 +1,16 @@
 import { Module } from '@nestjs/common';
-import { AppController } from './app.controller';
-import { AppService } from './app.service';
+import { TypeOrmModule, TypeOrmModuleOptions } from '@nestjs/typeorm';
+import { postgressOptions } from 'src/config/databaseConfig';
+import { AuthModule } from '../auth/auth.module';
+import { CartModule } from '../cart/cart.module';
+import { UserModule } from '../user/user.module';
 
 @Module({
-  imports: [],
-  controllers: [AppController],
-  providers: [AppService],
+  imports: [
+    TypeOrmModule.forRoot(postgressOptions as TypeOrmModuleOptions),
+    UserModule,
+    CartModule,
+    AuthModule,
+  ],
 })
 export class AppModule {}

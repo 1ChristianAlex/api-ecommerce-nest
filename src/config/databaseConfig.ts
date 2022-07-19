@@ -1,4 +1,4 @@
-import { DataSource } from 'typeorm';
+import { DataSource, DataSourceOptions } from 'typeorm';
 import { UserEntity } from '../database/entity';
 import {
   POSTGRES_DB,
@@ -8,7 +8,7 @@ import {
   POSTGRES_USER,
 } from './environment';
 
-const postgresConfig = new DataSource({
+const postgressOptions = {
   type: 'postgres',
   host: DB_URL,
   port: parseInt(POSTGRES_PORT),
@@ -19,6 +19,8 @@ const postgresConfig = new DataSource({
   synchronize: true,
   logging: true,
   migrationsTableName: 'migration',
-});
+};
 
-export { postgresConfig };
+const postgresConfig = new DataSource(postgressOptions as DataSourceOptions);
+
+export { postgresConfig, postgressOptions };
