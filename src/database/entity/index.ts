@@ -1,1 +1,9 @@
 export { default as UserEntity } from './user.schema/user.entity';
+export { default as RoleEntity } from './user.schema/role.entity';
+export { default as CategoryEntity } from './catalog.schema/category.entity';
+export { default as ProductEntity } from './catalog.schema/product.entity';
+export { default as CartEntity } from './order.schema/cart.entity';
+export { default as AddressEntity } from './order.schema/address.entity';
+export { default as OrderEntity } from './order.schema/order.entity';
+export { default as PaymentEntity } from './order.schema/payment.entity';
+export { default as PaymentTypesEntity } from './order.schema/paymentTypes.entity';

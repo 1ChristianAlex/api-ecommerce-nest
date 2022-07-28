@@ -10,33 +10,26 @@ services:
       - '5432:5432'
     env_file:
       - ../.env
-    networks:
-      - backend
+  
+  # mongo_databse:
+  #   build:
+  #     context: .
+  #     dockerfile: mongo.Dockerfile
+  #   restart: always
+  #   ports:
+  #     - '27017:27017'
+  #   env_file:
+  #     - ../.env
 
-  mongo_databse:
-    build:
-      context: .
-      dockerfile: mongo.Dockerfile
-    restart: always
-    ports:
-      - '27017:27017'
-    env_file:
-      - ../.env
-
-  api_node:
-    build:
-      context: /../
-      dockerfile: docker\api.Dockerfile
+  # api_node:
+  #   build:
+  #     context: /../
+  #     dockerfile: docker\api.Dockerfile
     
-    restart: always
-    ports:
-      - '3000:3000'
-    env_file:
-      - ../.env
-    networks:
-      - backend
-
-networks:
-  backend:
-    name: backend
-    external: true
+  #   restart: always
+  #   ports:
+  #     - '3000:3000'
+  #   env_file:
+  #     - ../.env
+  #   networks:
+  #     - backend

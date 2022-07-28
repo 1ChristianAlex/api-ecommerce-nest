@@ -20,7 +20,7 @@ const connectionSource = new DataSource({
     'src/database/entity/*.entity{.ts,.js}',
     'src/database/entity/*.schema/*.entity{.ts,.js}',
   ],
-  migrationsTableName: 'migration',
+  migrationsTableName: 'migrations',
   migrations: ['src/database/migration/*.ts'],
 });
 

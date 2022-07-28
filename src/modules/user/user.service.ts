@@ -1,7 +1,7 @@
 import { Injectable } from '@nestjs/common';
 import { JwtService } from '@nestjs/jwt';
 import { InjectRepository } from '@nestjs/typeorm';
-import { classToPlain, instanceToPlain } from 'class-transformer';
+import { instanceToPlain } from 'class-transformer';
 import { UserEntity } from 'src/database/entity';
 import { Repository } from 'typeorm';
 import { jwtConstants } from '../auth/constants';

@@ -1,5 +1,5 @@
 import { DataSource, DataSourceOptions } from 'typeorm';
-import { UserEntity } from '../database/entity';
+import * as Entity from '../database/entity';
 import {
   POSTGRES_DB,
   POSTGRES_PASSWORD,
@@ -15,12 +15,14 @@ const postgressOptions = {
   username: POSTGRES_USER,
   password: POSTGRES_PASSWORD,
   database: POSTGRES_DB,
-  entities: [UserEntity],
+  entities: [Object.values(Entity)],
   synchronize: true,
   logging: true,
-  migrationsTableName: 'migration',
+  migrationsTableName: 'migrations',
 };
 
-const postgresConfig = new DataSource(postgressOptions as DataSourceOptions);
+const postgresConfig = new DataSource(
+  postgressOptions as unknown as DataSourceOptions,
+);
 
 export { postgresConfig, postgressOptions };

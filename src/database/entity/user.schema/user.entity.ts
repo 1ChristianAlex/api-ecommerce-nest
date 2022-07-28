@@ -4,12 +4,17 @@ import {
   Column,
   CreateDateColumn,
   UpdateDateColumn,
+  JoinColumn,
+  OneToOne,
 } from 'typeorm';
+import Role from './role.entity';
 
 @Entity({ schema: 'user' })
 class User {
-  constructor(partial?: Partial<User>) {
-    Object.assign(this, partial);
+  constructor(entity: Omit<Role, 'id'>) {
+    if (entity) {
+      Object.assign(entity, this);
+    }
     this.updateAt = new Date();
   }
 
@@ -29,16 +34,23 @@ class User {
   password: string;
 
   @Column({ nullable: true, type: 'varchar' })
-  image: string;
+  image?: string;
+
+  @Column({ nullable: true, type: 'varchar' })
+  phone?: string;
 
   @CreateDateColumn()
-  createAt: Date;
+  createAt?: Date;
 
   @UpdateDateColumn()
-  updateAt: Date;
+  updateAt?: Date;
 
   @Column({ default: true })
   isActive: boolean;
+
+  @OneToOne(() => Role)
+  @JoinColumn()
+  role: Role;
 }
 
 export default User;

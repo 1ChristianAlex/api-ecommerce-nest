@@ -7,7 +7,7 @@ import { UserModule } from '../user/user.module';
 
 @Module({
   imports: [
-    TypeOrmModule.forRoot(postgressOptions as TypeOrmModuleOptions),
+    TypeOrmModule.forRoot(postgressOptions as unknown as TypeOrmModuleOptions),
     UserModule,
     CartModule,
     AuthModule,
